@@ -27,28 +27,39 @@
     var songDurationElement = document.getElementsByClassName('playbackTimeline__duration')[0].innerHTML;
     var songDuration = songDurationElement.slice(songDurationElement.indexOf('Duration'));
     songDuration = songDuration.slice(10, songDuration.indexOf('<'));
-    var minutes = '';
-    var seconds = '';
+    var firstNum = '';
+    var secondNum = '';
     var isSeparated = false;
+    var finalDuration = 228;
     for(let i = 0; i < songDuration.length; i++)
     {
         if(!isNaN(songDuration[i]))
         {
             if(isSeparated)
             {
-                seconds+=songDuration[i].toString();
+                secondNum+=songDuration[i].toString();
             }
             else
             {
-                minutes+=songDuration[i].toString();
+                firstNum+=songDuration[i].toString();
             }
         }
         else
         {
-            isSeparated = true
+            isSeparated = true;
         }
     }
-    songDuration = parseInt(minutes) * 60 + parseInt(seconds);
+    if(songDuration.includes('minut') && songDuration.includes('secon')){
+        finalDuration = firstNum * 60 + secondNum;
+    }
+    else if(songDuration.includes('minut') == false)
+    {
+        finalDuration = firstNum;
+    }
+    else if(songDuration.includes('secon') == false){
+        finalDuration = firstNum * 60;
+    }
+    //console.log(songDuration)
     var isPaused = document.getElementsByClassName('playControl')[0].title == 'Play current' ? true : false;
     var songInfo = {
         name:songName,
@@ -56,7 +67,7 @@
         artist:artist,
         url:songUrl,
         time_passed:timePassed,
-        duration:songDuration,
+        duration:finalDuration,
         is_paused: isPaused
     };
     var response = fetch('http://localhost:8080/',
