@@ -1,4 +1,3 @@
-
 // ==UserScript==
 // @name         SoundCloud Discord RPC
 // @namespace    kool
@@ -50,7 +49,7 @@
         }
     }
     if(songDuration.includes('minut') && songDuration.includes('secon')){
-        finalDuration = firstNum * 60 + secondNum;
+        finalDuration = parseInt(firstNum) * 60 + parseInt(secondNum);
     }
     else if(songDuration.includes('minut') == false)
     {
