@@ -12,9 +12,9 @@
 
 >2. Press "Create new script" and paste browser.js
 
->3. Install pypresence
+>3. Install requirements
 ```
-pip install pypresence
+pip install -r requirements.txt
 ```
 
 >4. Run client script
