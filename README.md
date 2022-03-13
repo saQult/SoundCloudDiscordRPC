@@ -20,5 +20,5 @@ pip install -r requirements.txt
 >4. Run client script
 
 ```
-python main.py
+python SoundCloud.py
 ```
