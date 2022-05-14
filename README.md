@@ -8,7 +8,7 @@
 
 ### How to use
 
->1. Instal Tapermonkey
+>1. Instal Tampermonkey
 
 >2. Press "Create new script" and paste browser.js
 
